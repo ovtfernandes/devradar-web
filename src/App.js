@@ -7,6 +7,8 @@ import './Sidebar.css';
 import './Main.css';
 
 function App() {
+  const [devs, setDevs] = useState([]);
+
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [latitude, setLatitude] = useState('');
@@ -27,6 +29,16 @@ function App() {
         timeout: 30000,
       },
     );
+  }, []);
+
+  useEffect(() => {
+    async function loadDevs() {
+      const response = await api.get('/devs');
+
+      setDevs(response.data);
+    }
+
+    loadDevs();
   }, []);
 
   async function handleAddDev(e) {
@@ -98,50 +110,19 @@ function App() {
 
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
-              <div className="user-info">
-                <strong>Vitor Fernandes</strong>
-                <span>ReactJS, React Native, Node.js</span>
-              </div>
-            </header>
-            <p>Testizim</p>
-            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
-              <div className="user-info">
-                <strong>Vitor Fernandes</strong>
-                <span>ReactJS, React Native, Node.js</span>
-              </div>
-            </header>
-            <p>Testizim</p>
-            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
-              <div className="user-info">
-                <strong>Vitor Fernandes</strong>
-                <span>ReactJS, React Native, Node.js</span>
-              </div>
-            </header>
-            <p>Testizim</p>
-            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
-              <div className="user-info">
-                <strong>Vitor Fernandes</strong>
-                <span>ReactJS, React Native, Node.js</span>
-              </div>
-            </header>
-            <p>Testizim</p>
-            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
-          </li>
+          {devs.map(dev => (
+            <li key={dev._id} className="dev-item">
+              <header>
+                <img src={dev.avatar_url} alt={dev.name} />
+                <div className="user-info">
+                  <strong>{dev.name}</strong>
+                  <span>{dev.techs.join(',')}</span>
+                </div>
+              </header>
+              <p>{dev.bio}</p>
+              <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no GitHub</a>
+            </li>
+          ))}
         </ul>
       </main>
     </div>
