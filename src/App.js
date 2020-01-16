@@ -3,6 +3,7 @@ import React from 'react';
 import './global.css';
 import './App.css';
 import './Sidebar.css';
+import './Main.css';
 
 function App() {
   return (
@@ -35,7 +36,54 @@ function App() {
           <button type="submit">Salvar</button>
         </form>
       </aside>
+
       <main>
+        <ul>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
+              <div className="user-info">
+                <strong>Vitor Fernandes</strong>
+                <span>ReactJS, React Native, Node.js</span>
+              </div>
+            </header>
+            <p>Testizim</p>
+            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
+          </li>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
+              <div className="user-info">
+                <strong>Vitor Fernandes</strong>
+                <span>ReactJS, React Native, Node.js</span>
+              </div>
+            </header>
+            <p>Testizim</p>
+            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
+          </li>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
+              <div className="user-info">
+                <strong>Vitor Fernandes</strong>
+                <span>ReactJS, React Native, Node.js</span>
+              </div>
+            </header>
+            <p>Testizim</p>
+            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
+          </li>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/58062772?s=460&v=4" alt="" />
+              <div className="user-info">
+                <strong>Vitor Fernandes</strong>
+                <span>ReactJS, React Native, Node.js</span>
+              </div>
+            </header>
+            <p>Testizim</p>
+            <a href="https://github.com/ovtfernandes">Acessar perfil no GitHub</a>
+          </li>
+        </ul>
       </main>
     </div>
   );
